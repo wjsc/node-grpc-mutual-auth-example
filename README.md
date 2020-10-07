@@ -35,7 +35,7 @@ Created out/Snazzy_Microservices.crt
 Created out/Snazzy_Microservices.crl
 ```
 
-# Want to set more information, choose an expiration date or key size? See...
+Want to set more information, choose an expiration date or key size? See...
 ```
 ./certstrap init -h
 ```
