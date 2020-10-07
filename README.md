@@ -9,7 +9,7 @@ Oct 7, 2020
 
 Setting up mutual authentication can be a little daunting, especially when the docs for a library you’re using don’t always have a good example. Top it off with having to make your own certificates, and the whole process can be a real PITA! To make it easier, we’re going to be using a tool from the great people at Square, certstrap. If you’ve ever used the easyrsa utility bundled with OpenVPN, it will feel very familiar as it makes generating your own PKI much simpler than manually using OpenSSL.
 
-Generating a root certificate authority
+#### Generating a root certificate authority
 The client and server will both trust the same, private root certificate. We’re generating this manually for this example but you could alternatively use an existing PKI, for example from a MS Windows Server Domain Controller.
 
 Find a release of certstrap for your operating system from their releases page. Once you’ve downloaded the binary, rename it to something more convenient and make it executable (if applicable).
@@ -42,7 +42,7 @@ Want to set more information, choose an expiration date or key size? See...
 
 As you can see above, we’ve now generated the main certificate that we’ll be trusting on both the client and the server (out/Snazzy_Microservices.crt).
 
-Generating a server certificate
+#### Generating a server certificate
 The hostname of the server’s certificate will be validated upon connection so ensure that the common name and DNS name match the hostname of your service. Generating a server certificate for your services is as easy as:
 
 ```
@@ -65,6 +65,7 @@ $ ./certstrap sign --CA Snazzy_Microservices "login.services.widgets.inc"
 Created out/login.services.widgets.inc.crt from out/login.services.widgets.inc.csr signed by out/Snazzy_Microservices.key
 ```
 
+#### Generating a client certificate
 Like the server, we also need to generate a certificate for the client. This time, we don’t need a DNS name and can use any common name we like:
 ```
 $ ./certstrap request-cert --common-name "client-1010101"
