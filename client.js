@@ -14,24 +14,17 @@ const options = {
 function main() {
   let client;
 
-  if (process.env.NODE_ENV === "production") {
-    const certsDir = path.join(process.cwd(), "client-certs");
+  const certsDir = path.join(process.cwd(), "client-certs");
 
-    client = new hello_proto.Greeter(
-      "localhost:50051",
-      grpc.credentials.createSsl(
-        fs.readFileSync(path.join(certsDir, "Snazzy_Microservices.crt")),
-        fs.readFileSync(path.join(certsDir, "client-1010101.key")),
-        fs.readFileSync(path.join(certsDir, "client-1010101.crt"))
-      ),
-      options
-    );
-  } else {
-    client = new hello_proto.Greeter(
-      "localhost:50051",
-      grpc.credentials.createInsecure()
-    );
-  }
+  client = new hello_proto.Greeter(
+    "localhost:50051",
+    grpc.credentials.createSsl(
+      fs.readFileSync(path.join(certsDir, "Snazzy_Microservices.crt")),
+      fs.readFileSync(path.join(certsDir, "client-1010101.key")),
+      fs.readFileSync(path.join(certsDir, "client-1010101.crt"))
+    ),
+    options
+  );
 
   client.sayHello({ name: "you" }, function(err, response) {
     err && console.error(err);

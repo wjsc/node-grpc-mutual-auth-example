@@ -23,28 +23,23 @@ function main() {
 
   const certsDir = path.join(process.cwd(), "server-certs");
 
-  if (process.env.NODE_ENV === "production") {
-    server.bind(
-      "0.0.0.0:50051",
-      grpc.ServerCredentials.createSsl(
-        fs.readFileSync(
-          path.join(certsDir, "Snazzy_Microservices.crt")
-        ),
-        [{
-            private_key: fs.readFileSync(
-              path.join( certsDir, "login.services.widgets.inc.key" )
-            ),
-            cert_chain: fs.readFileSync(
-              path.join( certsDir, "login.services.widgets.inc.crt" )
-            )
-        }],
-        true
-      )
-    );
-  } else {
-    server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure());
-  }
-
+  server.bind(
+    "0.0.0.0:50051",
+    grpc.ServerCredentials.createSsl(
+      fs.readFileSync(
+        path.join(certsDir, "Snazzy_Microservices.crt")
+      ),
+      [{
+          private_key: fs.readFileSync(
+            path.join( certsDir, "login.services.widgets.inc.key" )
+          ),
+          cert_chain: fs.readFileSync(
+            path.join( certsDir, "login.services.widgets.inc.crt" )
+          )
+      }],
+      true
+    )
+  );
   server.start();
   console.log("Server started");
 }
