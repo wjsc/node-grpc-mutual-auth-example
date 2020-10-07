@@ -1,7 +1,7 @@
 # node-grpc-mutual-auth-example
 Mutual auth with GRPC &amp; Node
 
-### Source: https://jsherz.com/grpc/node/nodejs/mutual/authentication/ssl/2017/10/27/grpc-node-with-mutual-auth.html
+Original blog: https://jsherz.com/grpc/node/nodejs/mutual/authentication/ssl/2017/10/27/grpc-node-with-mutual-auth.html
 
 
 ### Mutual auth with GRPC & Node: start to finish
