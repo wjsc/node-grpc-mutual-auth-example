@@ -26,13 +26,13 @@ function main() {
     options
   );
 
-  client.sayHello({ name: "you" }, function(err, response) {
+  client.sayHello({ name: "John" }, function(err, response) {
     err && console.error(err);
 
     console.log("Greeting:", response.message);
   });
 
-  client.sayHelloAgain({ name: "you" }, function(err, response) {
+  client.sayHelloAgain({ name: "John" }, function(err, response) {
     err && console.error(err);
 
     console.log("Greeting:", response.message);
