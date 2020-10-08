@@ -86,8 +86,8 @@ Created out/client-1010101.crt from out/client-1010101.csr signed by out/Snazzy_
 
 Troubleshooting
 If at any stage the above doesn’t work, try turning on verbose logging:
-
+```
 export GRPC_TRACE=all
 export GRPC_VERBOSITY=DEBUG
-
 node server
+```
